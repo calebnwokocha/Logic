@@ -3,10 +3,15 @@ package Logic;
 abstract class Operate implements Express {
     protected Express left;
     protected Express right;
+    private Express[] expressions;
 
     public Operate(Express left, Express right) {
         this.left = left;
         this.right = right;
+    }
+
+    public Operate(Express... expressions) {
+        this.expressions = expressions;
     }
 
     @Override
@@ -27,6 +32,7 @@ abstract class Operate implements Express {
         return new Not(this);
     }
 
+    @Override
     public Express not(Express expression) {
         return new Not(expression);
     }
@@ -44,5 +50,15 @@ abstract class Operate implements Express {
     @Override
     public Express iff(Express expression) {
         return new Iff(this, expression);
+    }
+
+    @Override
+    public Express thereExist(Express... expression) {
+        return new ThereExist(expression);
+    }
+
+    @Override
+    public Express forAll(Express... expression) {
+        return new ForAll(expression);
     }
 }

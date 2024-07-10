@@ -65,7 +65,7 @@ public class Terminal {
         if (expression == null) {
             throw new IllegalArgumentException("Expression " + expressionName + " not found. Type 'HELP' for help.");
         }
-        expressions.put(name, new Formula(expression));
+        expressions.put(name, expression);
         System.out.println("Defined formula " + name + " with expression " + expressionName);
     }
 
@@ -102,8 +102,8 @@ public class Terminal {
                 case "not" -> result.not();
                 case "equate" -> result.equate(rightExpression);
                 case "imply" -> result.imply(rightExpression);
-                case "thereExist" -> Formula.thereExist(rightExpression);
-                case "forAll" -> Formula.forAll(rightExpression);
+                case "thereExist" -> result.thereExist(rightExpression);
+                case "forAll" -> result.forAll(rightExpression);
                 default -> throw new IllegalArgumentException("Unknown operator: " + operator + ". Type 'HELP' for help.");
             };
         }
@@ -140,8 +140,8 @@ public class Terminal {
                 case "not" -> result.not();
                 case "equate" -> result.equate(rightExpression);
                 case "imply" -> result.imply(rightExpression);
-                case "thereExist" -> Formula.thereExist(rightExpression);
-                case "forAll" -> Formula.forAll(rightExpression);
+                case "thereExist" -> result.thereExist(rightExpression);
+                case "forAll" -> result.forAll(rightExpression);
                 default -> throw new IllegalArgumentException("Unknown operator: " + operator + ". Type 'HELP' for help.");
             };
         }
@@ -174,5 +174,6 @@ public class Terminal {
         System.out.println("4. Verify an expression: expression.verify();");
         System.out.println("   Example: exp1.verify()");
         System.out.println("5. Exit the Terminal: EXIT");
+        System.out.println("Software Author: Caleb Princewill N. (calebnwokocha@gmail.com)");
     }
 }

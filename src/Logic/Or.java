@@ -1,6 +1,6 @@
 package Logic;
 
-public class Or extends Operate {
+class Or extends Operate {
     public Or(Express left, Express right) {
         super(left, right);
     }

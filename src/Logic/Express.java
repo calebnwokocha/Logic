@@ -10,12 +10,6 @@ public interface Express {
     Express equate(Express expression);
     Express imply(Express expression);
     Express iff(Express expression);
-
-    static Express thereExist(Express... expressions) {
-        return new ThereExist(expressions);
-    }
-
-    static Express forAll(Express... expressions){
-        return new ForAll(expressions);
-    }
+    Express thereExist(Express... expressions);
+    Express forAll(Express... expressions);
 }
