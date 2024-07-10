@@ -42,6 +42,11 @@ public class Formula implements Express {
         return new Imply(this.expression, expression);
     }
 
+    @Override
+    public Express iff(Express expression) {
+        return new Iff(this, expression);
+    }
+
     public static Express thereExist(Express... expressions) {
         return new ThereExist(expressions);
     }

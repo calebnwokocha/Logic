@@ -46,4 +46,9 @@ public class ForAll implements Express {
     public Express imply(Express expression) {
         return new Imply(this, expression);
     }
+
+    @Override
+    public Express iff(Express expression) {
+        return new Iff(this, expression);
+    }
 }

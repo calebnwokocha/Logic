@@ -1,6 +1,6 @@
 import Logic.*;
 
-public class Main {
+public class Example {
     public static void main(String[] args) {
         Variable varA = new Variable(true);
         Variable varB = new Variable(false);
@@ -15,7 +15,7 @@ public class Main {
         System.out.println("varA AND formula(varB): " + exp2.evaluate()); // Output: false
 
         // Example: variable.or.formula
-        Express exp3 = varA.not(varB);
+        Express exp3 = varB.iff(varB);
         System.out.println("varA OR formula(varB): " + exp3.evaluate()); // Output: true
 
         // Example: variable.or.variable

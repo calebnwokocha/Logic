@@ -40,4 +40,8 @@ class Not implements Express {
     public Express imply(Express expression) {
         return new Imply(this, expression);
     }
+
+    public Express iff(Express expression) {
+        return new Iff(this, expression);
+    }
 }

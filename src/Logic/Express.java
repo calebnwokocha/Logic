@@ -9,6 +9,7 @@ public interface Express {
     public abstract Express not(Express express);
     public abstract Express equate(Express expression);
     public abstract Express imply(Express expression);
+    public abstract Express iff(Express expression);
 
     public static Express thereExist(Express... expressions) {
         return new ThereExist(expressions);

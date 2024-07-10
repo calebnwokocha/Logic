@@ -1,7 +1,7 @@
 package Logic;
 
 public class Variable implements Express {
-    private boolean value;
+    private final boolean value;
 
     public Variable(boolean value) {
         this.value = value;
@@ -40,5 +40,9 @@ public class Variable implements Express {
     @Override
     public Express imply(Express expression) {
         return new Imply(this, expression);
+    }
+
+    public Express iff(Express expression) {
+        return new Iff(this, expression);
     }
 }

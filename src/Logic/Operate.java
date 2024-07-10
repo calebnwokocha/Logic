@@ -42,6 +42,8 @@ abstract class Operate implements Express {
         return new Imply(this, expression);
     }
 
+    public Express iff(Express expression) {return new Iff(this, expression);}
+
     public Express thereExist(Express... expressions) {
         return new ThereExist(expressions);
     }
