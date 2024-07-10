@@ -8,7 +8,7 @@ public class Variable implements Express {
     }
 
     @Override
-    public boolean evaluate() {
+    public boolean verify() {
         return value;
     }
 
@@ -42,6 +42,7 @@ public class Variable implements Express {
         return new Imply(this, expression);
     }
 
+    @Override
     public Express iff(Express expression) {
         return new Iff(this, expression);
     }

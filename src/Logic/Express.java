@@ -1,21 +1,21 @@
 package Logic;
 
 public interface Express {
-    public  abstract boolean evaluate();
+    boolean verify();
 
-    public abstract Express and(Express expression);
-    public abstract Express or(Express expression);
-    public abstract Express not();
-    public abstract Express not(Express express);
-    public abstract Express equate(Express expression);
-    public abstract Express imply(Express expression);
-    public abstract Express iff(Express expression);
+    Express and(Express expression);
+    Express or(Express expression);
+    Express not();
+    Express not(Express express);
+    Express equate(Express expression);
+    Express imply(Express expression);
+    Express iff(Express expression);
 
-    public static Express thereExist(Express... expressions) {
+    static Express thereExist(Express... expressions) {
         return new ThereExist(expressions);
     }
 
-    public static Express forAll(Express... expressions) {
+    static Express forAll(Express... expressions){
         return new ForAll(expressions);
     }
 }

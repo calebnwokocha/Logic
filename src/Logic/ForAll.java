@@ -1,6 +1,6 @@
 package Logic;
 
-public class ForAll implements Express {
+class ForAll implements Express {
     private final Express[] expressions;
 
     public ForAll(Express... expressions) {
@@ -8,9 +8,9 @@ public class ForAll implements Express {
     }
 
     @Override
-    public boolean evaluate() {
+    public boolean verify() {
         for (Express expression : expressions) {
-            if (!expression.evaluate()) {
+            if (!expression.verify()) {
                 return false;
             }
         }

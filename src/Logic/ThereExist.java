@@ -8,9 +8,9 @@ class ThereExist implements Express {
     }
 
     @Override
-    public boolean evaluate() {
+    public boolean verify() {
         for (Express expression : expressions) {
-            if (expression.evaluate()) {
+            if (expression.verify()) {
                 return true;
             }
         }

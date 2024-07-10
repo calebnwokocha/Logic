@@ -8,8 +8,8 @@ class Not implements Express {
     }
 
     @Override
-    public boolean evaluate() {
-        return !expression.evaluate();
+    public boolean verify() {
+        return !expression.verify();
     }
 
     @Override
@@ -24,9 +24,10 @@ class Not implements Express {
 
     @Override
     public Express not() {
-        return new Not(this);
+        return new Not(this.expression);
     }
 
+    @Override
     public Express not(Express expression) {
         return new Not(expression);
     }
@@ -41,7 +42,17 @@ class Not implements Express {
         return new Imply(this, expression);
     }
 
+    @Override
     public Express iff(Express expression) {
         return new Iff(this, expression);
+    }
+
+
+    public Express thereExist(Express... expressions) {
+        return new ThereExist(expressions);
+    }
+
+    public Express forAll(Express... expressions) {
+        return new ForAll(expressions);
     }
 }

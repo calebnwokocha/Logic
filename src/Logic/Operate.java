@@ -10,7 +10,7 @@ abstract class Operate implements Express {
     }
 
     @Override
-    public abstract boolean evaluate();
+    public abstract boolean verify();
 
     @Override
     public Express and(Express expression) {
@@ -27,7 +27,6 @@ abstract class Operate implements Express {
         return new Not(this);
     }
 
-    @Override
     public Express not(Express expression) {
         return new Not(expression);
     }
@@ -42,13 +41,8 @@ abstract class Operate implements Express {
         return new Imply(this, expression);
     }
 
-    public Express iff(Express expression) {return new Iff(this, expression);}
-
-    public Express thereExist(Express... expressions) {
-        return new ThereExist(expressions);
-    }
-
-    public Express forAll(Express... expressions) {
-        return new ForAll(expressions);
+    @Override
+    public Express iff(Express expression) {
+        return new Iff(this, expression);
     }
 }
