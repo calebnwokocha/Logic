@@ -6,7 +6,5 @@ class And extends Operate {
     }
 
     @Override
-    public boolean verify() {
-        return left.verify() && right.verify();
-    }
+    public boolean verify() {return left.verify() && right.verify();}
 }
