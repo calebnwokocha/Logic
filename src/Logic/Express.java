@@ -2,6 +2,7 @@ package Logic;
 
 public interface Express {
     boolean verify();
+    String toString();
 
     Express and(Express expression);
     Express or(Express expression);

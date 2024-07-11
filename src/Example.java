@@ -2,8 +2,8 @@ import Logic.*;
 
 public class Example {
     public static void main(String[] args) {
-        Variable varA = new Variable(true);
-        Variable varB = new Variable(false);
+        Variable varA = new Variable(false);
+        Variable varB = new Variable(true);
         Variable varC = new Variable(true);
 
         // Basic Operations

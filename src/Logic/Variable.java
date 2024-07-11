@@ -9,6 +9,12 @@ public class Variable extends Operate {
 
     @Override
     public boolean verify() {
+        System.out.println(toString());
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return "Variable(" + value + ")";
     }
 }

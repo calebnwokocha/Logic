@@ -9,6 +9,12 @@ class Not extends Operate {
 
     @Override
     public boolean verify() {
+        System.out.println(toString());
         return !expression.verify();
+    }
+
+    @Override
+    public String toString() {
+        return "(NOT " + expression + ")";
     }
 }

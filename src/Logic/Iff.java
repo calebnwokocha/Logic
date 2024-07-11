@@ -7,6 +7,12 @@ class Iff extends Operate {
 
     @Override
     public boolean verify() {
+        System.out.println(toString());
         return left.verify() == right.verify();
+    }
+
+    @Override
+    public String toString() {
+        return "(" + left + " IFF " + right + ")";
     }
 }

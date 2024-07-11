@@ -18,6 +18,9 @@ abstract class Operate implements Express {
     public abstract boolean verify();
 
     @Override
+    public abstract String toString();
+
+    @Override
     public Express and(Express expression) {
         return new And(this, expression);
     }

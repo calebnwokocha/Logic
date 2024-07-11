@@ -33,7 +33,7 @@ public class Terminal {
         } else if (command.startsWith("Express")) {
             handleExpression(command);
         } else if (command.contains(".verify()")) {
-            handleVerifyExpression(command);
+            handleVerification(command);
         } else {
             System.out.println("Syntax " + command + " is invalid.");
         }
@@ -109,7 +109,7 @@ public class Terminal {
         System.out.println("Defined expression " + name);
     }
 
-    private static void handleVerifyExpression(String command) {
+    private static void handleVerification(String command) {
         String[] parts = command.split("\\.");
         if (parts.length != 2 || !parts[1].equals("verify()")) {
             throw new IllegalArgumentException("Invalid verify syntax.");
