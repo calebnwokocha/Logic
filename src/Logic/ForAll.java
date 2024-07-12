@@ -1,34 +1,33 @@
 package Logic;
 
 class ForAll extends Operate {
-    private final Express[] expressions;
-
-    public ForAll(Express... expressions) {
-        this.expressions = expressions;
+    public ForAll(Express left, Express... rights) {
+        super(left, rights);
     }
+
 
     @Override
     public boolean verify() {
         System.out.println(toString());
-        for (Express expression : expressions) {
+        for (Express expression : rights) {
             if (!expression.verify()) {
                 return false;
             }
         }
-        return true;
+        return left.verify();
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("FOR_ALL(");
-        for (int i = 0; i < expressions.length; i++) {
-            sb.append(expressions[i]);
-            if (i < expressions.length - 1) {
+        sb.append("_").append(left).append("_for_all_");
+        for (int i = 0; i < rights.length; i++) {
+            sb.append(rights[i]);
+            if (i < rights.length - 1) {
                 sb.append(", ");
             }
         }
-        sb.append(")");
+        sb.append("_");
         return sb.toString();
     }
 }

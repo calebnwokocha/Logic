@@ -13,6 +13,6 @@ class And extends Operate {
 
     @Override
     public String toString() {
-        return "(" + left + " AND " + right + ")";
+        return "_" + left + "_and_" + right + "_";
     }
 }

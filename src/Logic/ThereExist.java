@@ -1,18 +1,16 @@
 package Logic;
 
 class ThereExist extends Operate {
-    private final Express[] expressions;
-
-    public ThereExist(Express... expressions) {
-        this.expressions = expressions;
+    public ThereExist(Express left, Express... rights) {
+        super(left, rights);
     }
 
     @Override
     public boolean verify() {
         System.out.println(toString());
-        for (Express expression : expressions) {
+        for (Express expression : rights) {
             if (expression.verify()) {
-                return true;
+                return left.verify();
             }
         }
         return false;
@@ -21,15 +19,14 @@ class ThereExist extends Operate {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("THERE_EXIST(");
-        for (int i = 0; i < expressions.length; i++) {
-            sb.append(expressions[i]);
-            if (i < expressions.length - 1) {
+        sb.append("_").append(left).append("_there_exist_");
+        for (int i = 0; i < rights.length; i++) {
+            sb.append(rights[i]);
+            if (i < rights.length - 1) {
                 sb.append(", ");
             }
         }
-        sb.append(")");
+        sb.append("_");
         return sb.toString();
     }
-
 }

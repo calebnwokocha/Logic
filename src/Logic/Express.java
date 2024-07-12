@@ -6,11 +6,10 @@ public interface Express {
 
     Express and(Express expression);
     Express or(Express expression);
-    Express not();
-    Express not(Express express);
+    Express not(Express expression);
     Express equate(Express expression);
     Express imply(Express expression);
     Express iff(Express expression);
-    Express thereExist(Express... expressions);
-    Express forAll(Express... expressions);
+    Express there_exist(Express expression, Express... expressions);
+    Express for_all(Express expression, Express... expressions);
 }

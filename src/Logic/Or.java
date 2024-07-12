@@ -13,6 +13,6 @@ class Or extends Operate {
 
     @Override
     public String toString() {
-        return "(" + left + " OR " + right + ")";
+        return "_" + left + "_or_" + right + "_";
     }
 }

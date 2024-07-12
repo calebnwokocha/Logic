@@ -1,17 +1,26 @@
 package Logic;
 
 abstract class Operate implements Express {
+    protected boolean value;
     protected Express left;
     protected Express right;
-    private Express[] expressions;
+    protected Express[] rights;
 
+    public Operate(boolean value) {
+        this.value = value;
+    }
+
+    public Operate(Express right) {
+        this.right = right;
+    }
     public Operate(Express left, Express right) {
         this.left = left;
         this.right = right;
     }
 
-    public Operate(Express... expressions) {
-        this.expressions = expressions;
+    public Operate(Express left, Express... rights) {
+        this.left = left;
+        this.rights = rights;
     }
 
     @Override
@@ -31,13 +40,8 @@ abstract class Operate implements Express {
     }
 
     @Override
-    public Express not() {
-        return new Not(this);
-    }
-
-    @Override
     public Express not(Express expression) {
-        return new Not(expression);
+        return new Not(this, expression);
     }
 
     @Override
@@ -56,12 +60,12 @@ abstract class Operate implements Express {
     }
 
     @Override
-    public Express thereExist(Express... expression) {
-        return new ThereExist(expression);
+    public Express there_exist(Express expression, Express... expressions) {
+        return new ThereExist(expression, expressions);
     }
 
     @Override
-    public Express forAll(Express... expression) {
-        return new ForAll(expression);
+    public Express for_all(Express expression, Express... expressions) {
+        return new ForAll(expression, expressions);
     }
 }

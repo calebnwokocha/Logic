@@ -1,20 +1,18 @@
 package Logic;
 
 class Not extends Operate {
-    private final Express expression;
-
-    public Not(Express expression) {
-        this.expression = expression;
+    public Not(Express left, Express right) {
+        super(left, right);
     }
 
     @Override
     public boolean verify() {
         System.out.println(toString());
-        return !expression.verify();
+        return left.verify() && !right.verify();
     }
 
     @Override
     public String toString() {
-        return "(NOT " + expression + ")";
+        return "_" + left + "_not_" + right + "_";
     }
 }

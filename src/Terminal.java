@@ -1,3 +1,4 @@
+/*
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -71,7 +72,7 @@ public class Terminal {
             String operator = subParts[0].trim();
             String argumentPart = subParts[1].replace(")", "").trim();
 
-            if (operator.equals("thereExist") || operator.equals("forAll")) {
+            if (operator.equals("there_exist") || operator.equals("for_all")) {
                 String[] args = argumentPart.split(",");
                 Express[] expressionsArgs = new Express[args.length];
                 for (int j = 0; j < args.length; j++) {
@@ -80,10 +81,10 @@ public class Terminal {
                         throw new IllegalArgumentException("Expression " + args[j].trim() + " not found.");
                     }
                 }
-                if (operator.equals("thereExist")) {
-                    result = result.thereExist(expressionsArgs);
+                if (operator.equals("there_exist")) {
+                    result = result.there_exist(expressionsArgs);
                 } else {
-                    result = result.forAll(expressionsArgs);
+                    result = result.for_all(expressionsArgs);
                 }
             } else {
                 Express rightExpression = null;
@@ -123,14 +124,15 @@ public class Terminal {
 
     private static void printHelp() {
         System.out.println("Logic Terminal Commands:");
-        System.out.println("1. Define a variable: Variable varName = new Variable(true|false)");
+        System.out.println("1. Define a variable: Variable var_name = new Variable(true|false)");
         System.out.println("   Example: Variable varA = new Variable(true)");
-        System.out.println("2. Define an expression: Express expName = varName.operator(varName|formulaName|expression)");
-        System.out.println("   Operators: and, or, not, equate, imply, iff, thereExist, forAll");
+        System.out.println("2. Define an expression: Express expName = varName.operator(varName|expression)");
+        System.out.println("   Operators: and, or, not, equate, imply, iff, there_exist, for_all");
         System.out.println("   Example: Express exp1 = varA.and(varB).imply(varA).and(varB)");
         System.out.println("3. Verify an expression: expression.verify();");
         System.out.println("   Example: exp1.verify()");
-        System.out.println("5. Exit the Terminal: EXIT");
+        System.out.println("4. Exit the Terminal: EXIT");
         System.out.println("Software Author: Caleb Princewill N. (calebnwokocha@gmail.com)");
     }
 }
+*/

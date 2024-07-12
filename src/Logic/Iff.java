@@ -13,6 +13,6 @@ class Iff extends Operate {
 
     @Override
     public String toString() {
-        return "(" + left + " IFF " + right + ")";
+        return "_" + left + "_iff_" + right + "_";
     }
 }

@@ -13,6 +13,6 @@ class Equate extends Operate {
 
     @Override
     public String toString() {
-        return "(" + left + " EQUALS " + right + ")";
+        return "_" + left + "_equate_" + right + "_";
     }
 }

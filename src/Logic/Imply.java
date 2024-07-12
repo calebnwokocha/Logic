@@ -13,6 +13,6 @@ class Imply extends Operate {
 
     @Override
     public String toString() {
-        return "(" + left + " IMPLIES " + right + ")";
+        return "_" + left + "_imply_" + right + "_";
     }
 }
