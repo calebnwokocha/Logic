@@ -5,6 +5,7 @@ class ThereExist extends Operate {
         super(left, rights);
     }
 
+    //
     @Override
     public boolean verify() {
         System.out.println(toString());
