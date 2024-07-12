@@ -10,6 +10,6 @@ public interface Express {
     Express equate(Express expression);
     Express imply(Express expression);
     Express iff(Express expression);
-    Express there_exist(Express expression, Express... expressions);
-    Express for_all(Express expression, Express... expressions);
+    Express there_exist(Express... expressions);
+    Express for_all(Express... expressions);
 }

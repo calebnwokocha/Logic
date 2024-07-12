@@ -60,12 +60,12 @@ abstract class Operate implements Express {
     }
 
     @Override
-    public Express there_exist(Express expression, Express... expressions) {
-        return new ThereExist(expression, expressions);
+    public Express there_exist(Express... expressions) {
+        return new ThereExist(this, expressions);
     }
 
     @Override
-    public Express for_all(Express expression, Express... expressions) {
-        return new ForAll(expression, expressions);
+    public Express for_all(Express... expressions) {
+        return new ForAll(this, expressions);
     }
 }

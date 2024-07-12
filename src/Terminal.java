@@ -1,4 +1,3 @@
-/*
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -20,7 +19,7 @@ public class Terminal {
             try {
                 handleCommand(command);
             } catch (Exception e) {
-                System.out.println("Error0: " + e.getMessage() + ". Type 'HELP' for help.");
+                System.out.println("Error: " + e.getMessage() + ". Type 'HELP' for help.");
             }
         }
         scanner.close();
@@ -36,14 +35,14 @@ public class Terminal {
         } else if (command.contains(".verify()")) {
             handleVerification(command);
         } else {
-            System.out.println("Syntax " + command + " is invalid.");
+            throw new IllegalArgumentException("Syntax " + command + " is invalid.");
         }
     }
 
     private static void handleVariable(String command) {
         String[] parts = command.split("=");
         if (parts.length != 2) {
-            throw new IllegalArgumentException("Invalid variable definition syntax.");
+            throw new IllegalArgumentException("Invalid variable syntax.");
         }
         String name = parts[0].trim().split(" ")[1];
         String valueString = parts[1].trim().replace("new Variable(", "").replace(")", "");
@@ -55,7 +54,7 @@ public class Terminal {
     private static void handleExpression(String command) {
         String[] parts = command.split("=");
         if (parts.length != 2) {
-            throw new IllegalArgumentException("Invalid expression definition syntax.");
+            throw new IllegalArgumentException("Invalid expression syntax.");
         }
         String name = parts[0].trim().split(" ")[1];
         String[] exprParts = parts[1].trim().replace(";", "").split("\\.");
@@ -98,7 +97,7 @@ public class Terminal {
                 result = switch (operator) {
                     case "and" -> result.and(rightExpression);
                     case "or" -> result.or(rightExpression);
-                    case "not" -> result.not();
+                    case "not" -> result.not(rightExpression);
                     case "equate" -> result.equate(rightExpression);
                     case "imply" -> result.imply(rightExpression);
                     case "iff" -> result.iff(rightExpression);
@@ -113,7 +112,7 @@ public class Terminal {
     private static void handleVerification(String command) {
         String[] parts = command.split("\\.");
         if (parts.length != 2 || !parts[1].equals("verify()")) {
-            throw new IllegalArgumentException("Invalid verify syntax.");
+            throw new IllegalArgumentException("Invalid verification syntax.");
         }
         Express result = expressions.get(parts[0]);
         if (result == null) {
@@ -129,10 +128,9 @@ public class Terminal {
         System.out.println("2. Define an expression: Express expName = varName.operator(varName|expression)");
         System.out.println("   Operators: and, or, not, equate, imply, iff, there_exist, for_all");
         System.out.println("   Example: Express exp1 = varA.and(varB).imply(varA).and(varB)");
-        System.out.println("3. Verify an expression: expression.verify();");
+        System.out.println("3. Verify an expression: expression.verify()");
         System.out.println("   Example: exp1.verify()");
         System.out.println("4. Exit the Terminal: EXIT");
         System.out.println("Software Author: Caleb Princewill N. (calebnwokocha@gmail.com)");
     }
 }
-*/
