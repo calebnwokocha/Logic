@@ -23,7 +23,7 @@ public class Terminal {
             }
         }
         scanner.close();
-    }//
+    }
 
     private static void handleCommand(String command) {
         if (command.equalsIgnoreCase("HELP")) {
