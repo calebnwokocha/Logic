@@ -7,8 +7,9 @@ class And extends Operate {
 
     @Override
     public boolean verify() {
+        boolean result = left.verify() && right.verify();
         System.out.println(toString());
-        return left.verify() && right.verify();
+        return result;
     }
 
     @Override

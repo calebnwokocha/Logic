@@ -5,15 +5,14 @@ class ThereExist extends Operate {
         super(left, rights);
     }
 
-    //
     @Override
     public boolean verify() {
-        System.out.println(toString());
         for (Express expression : rights) {
             if (expression.verify()) {
                 return left.verify();
             }
         }
+        System.out.println(toString());
         return false;
     }
 

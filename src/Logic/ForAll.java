@@ -8,13 +8,14 @@ class ForAll extends Operate {
 
     @Override
     public boolean verify() {
-        System.out.println(toString());
         for (Express expression : rights) {
             if (!expression.verify()) {
                 return false;
             }
         }
-        return left.verify();
+        boolean result = left.verify();
+        System.out.println(toString());
+        return result;
     }
 
     @Override
