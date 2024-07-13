@@ -1,0 +1,2 @@
+Variable varA = new Variable(false)
+Variable varB = new Variable(true)

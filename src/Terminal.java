@@ -1,4 +1,7 @@
+import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -6,6 +9,8 @@ import Logic.*;
 
 public class Terminal {
     private static final Map<String, Express> expressions = new HashMap<>();
+    private static final List<String> commandHistory = new ArrayList<>();
+    private static final String SAVE_FILE = "commands.txt";
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -18,6 +23,9 @@ public class Terminal {
             }
             try {
                 handleCommand(command);
+                if (!command.equalsIgnoreCase("LOAD") && !command.equalsIgnoreCase("SAVE")) {
+                    commandHistory.add(command); // Add the command to history
+                }
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage() + ". Type 'HELP' for help.");
             }
@@ -25,7 +33,7 @@ public class Terminal {
         scanner.close();
     }
 
-    private static void handleCommand(String command) {
+    private static void handleCommand(String command) throws IOException {
         if (command.equalsIgnoreCase("HELP")) {
             printHelp();
         } else if (command.startsWith("Variable")) {
@@ -34,6 +42,10 @@ public class Terminal {
             handleExpression(command);
         } else if (command.contains(".verify()")) {
             handleVerification(command);
+        } else if (command.equalsIgnoreCase("SAVE")) {
+            saveCommands();
+        } else if (command.equalsIgnoreCase("LOAD")) {
+            loadCommands();
         } else {
             throw new IllegalArgumentException("Syntax " + command + " is invalid.");
         }
@@ -130,7 +142,31 @@ public class Terminal {
         System.out.println("   Example: Express exp1 = varA.and(varB).imply(varA).and(varB)");
         System.out.println("3. Verify an expression: expression.verify()");
         System.out.println("   Example: exp1.verify()");
-        System.out.println("4. Exit the Terminal: EXIT");
+        System.out.println("4. Save commands: SAVE");
+        System.out.println("5. Load commands: LOAD");
+        System.out.println("6. Exit the Terminal: EXIT");
         System.out.println("Software Author: Caleb Princewill N. (calebnwokocha@gmail.com)");
+    }
+
+    private static void saveCommands() throws IOException {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(SAVE_FILE, true))) {
+            for (String command : commandHistory) {
+                writer.println(command); // Write each command on a new line
+            }
+            commandHistory.clear(); // Clear command history after saving
+            System.out.println("Commands saved successfully.");
+        }
+    }
+
+    private static void loadCommands() throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(SAVE_FILE))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                handleCommand(line);
+            }
+            System.out.println("Commands loaded successfully.");
+        } catch (FileNotFoundException e) {
+            System.out.println("No saved commands found.");
+        }
     }
 }
