@@ -1,2 +1,6 @@
 Variable varA = new Variable(false)
 Variable varB = new Variable(true)
+Express exp1 = varA.and(varB)
+exp1.verify()
+Express exp2 = varA.or(varB)
+exp2.verify()

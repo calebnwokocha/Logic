@@ -23,7 +23,9 @@ public class Terminal {
             }
             try {
                 handleCommand(command);
-                if (!command.equalsIgnoreCase("LOAD") && !command.equalsIgnoreCase("SAVE")) {
+                if (!command.equalsIgnoreCase("LOAD") &&
+                        !command.equalsIgnoreCase("SAVE") &&
+                        !command.equalsIgnoreCase("HELP")) {
                     commandHistory.add(command); // Add the command to history
                 }
             } catch (Exception e) {
