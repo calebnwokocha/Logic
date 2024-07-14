@@ -39,8 +39,8 @@ public class Terminal {
     private static void handleCommand(String command) throws IOException {
         if (command.equalsIgnoreCase("HELP")) {
             printHelp();
-        } else if (command.startsWith("Variable")) {
-            handleVariable(command);
+        } else if (command.startsWith("Axiom")) {
+            handleAxiom(command);
         } else if (command.startsWith("Express")) {
             handleExpression(command);
         } else if (command.contains(".verify()")) {
@@ -56,16 +56,16 @@ public class Terminal {
         }
     }
 
-    private static void handleVariable(String command) {
+    private static void handleAxiom(String command) {
         String[] parts = command.split("=");
         if (parts.length != 2) {
-            throw new IllegalArgumentException("Invalid variable syntax.");
+            throw new IllegalArgumentException("Invalid axiom syntax.");
         }
         String name = parts[0].trim().split(" ")[1];
-        String valueString = parts[1].trim().replace("new Variable(", "").replace(")", "");
+        String valueString = parts[1].trim().replace("new Axiom(", "").replace(")", "");
         boolean value = Boolean.parseBoolean(valueString);
-        map.put(name, new Variable(value));
-        System.out.println("Defined variable " + name + " with value " + value);
+        map.put(name, new Axiom(value));
+        System.out.println("Defined axiom " + name + " with value " + value);
     }
 
     private static void handleExpression(String command) {
@@ -148,13 +148,13 @@ public class Terminal {
 
     private static void printHelp() {
         System.out.println("Logic Terminal Commands:");
-        System.out.println("1. Define a variable: Variable var_name = new Variable(true|false)");
-        System.out.println("   Example: Variable varA = new Variable(true)");
-        System.out.println("2. Define an expression: Express expName = varName.operator(varName|expression)");
+        System.out.println("1. Define an axiom: Axiom ax_name = new Axiom(true|false)");
+        System.out.println("   Example: Axiom ax_a = new Axiom(true)");
+        System.out.println("2. Define an expression: Express expName = ax_name.operator(ax_name|expression)");
         System.out.println("   Operators: and, or, not, equate, imply, iff, there_exist, for_all");
-        System.out.println("   Example: Express exp1 = varA.and(varB).imply(varA).and(varB)");
+        System.out.println("   Example: Express exp_1 = ax_a.and(ax_b).imply(ax_a).and(ax_b)");
         System.out.println("3. Verify an expression: expression.verify()");
-        System.out.println("   Example: exp1.verify()");
+        System.out.println("   Example: exp_1.verify()");
         System.out.println("4. Save commands: SAVE");
         System.out.println("5. Load commands: LOAD");
         System.out.println("6. Generate random expression: EXPLORE");
@@ -195,7 +195,7 @@ public class Terminal {
         String name2 = keys.get(random.nextInt(keys.size()));
         String operator = getRandomOperator();
 
-        String expressionName = "exp" + (map.size() + 1);
+        String expressionName = "exp_" + (map.size() + 1);
         String randomExpressionCommand;
 
         if (operator.equals("there_exist") || operator.equals("for_all")) {

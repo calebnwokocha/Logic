@@ -2,73 +2,73 @@ import Logic.*;
 
 public class Example {
     public static void main(String[] args) {
-        Variable varA = new Variable(false);
-        Variable varB = new Variable(true);
-        Variable varC = new Variable(true);
+        Axiom ax_a = new Axiom(false);
+        Axiom ax_b = new Axiom(true);
+        Axiom ax_c = new Axiom(true);
 
         // Basic Operations
-        Express exp1 = varA.and(varB);
-        System.out.println("Result 1: " + exp1.verify() + "\n");
+        Express exp_1 = ax_a.and(ax_b);
+        System.out.println("Result 1: " + exp_1.verify() + "\n");
 
-        Express exp2 = varA.or(varB);
-        System.out.println("Result 2: " + exp2.verify() + "\n");
+        Express exp_2 = ax_a.or(ax_b);
+        System.out.println("Result 2: " + exp_2.verify() + "\n");
 
-        Express exp3 = varA.not(varA);
-        System.out.println("Result 3: " + exp3.verify() + "\n");
+        Express exp_3 = ax_a.not(ax_a);
+        System.out.println("Result 3: " + exp_3.verify() + "\n");
 
-        Express exp4 = varA.equate(varB);
-        System.out.println("Result 4: " + exp4.verify() + "\n");
+        Express exp_4 = ax_a.equate(ax_b);
+        System.out.println("Result 4: " + exp_4.verify() + "\n");
 
-        Express exp5 = varA.imply(varB);
-        System.out.println("Result 5: " + exp5.verify() + "\n");
+        Express exp_5 = ax_a.imply(ax_b);
+        System.out.println("Result 5: " + exp_5.verify() + "\n");
 
-        Express exp6 = varA.iff(varB);
+        Express exp6 = ax_a.iff(ax_b);
         System.out.println("Result 6: " + exp6.verify() + "\n");
 
         // Quantifiers
-        Express exp7 = varA.there_exist(varA, varB);
-        System.out.println("\nResult 7: " + exp7.verify() + "\n");
+        Express exp_7 = ax_a.there_exist(ax_a, ax_b);
+        System.out.println("\nResult 7: " + exp_7.verify() + "\n");
 
-        Express exp8 = varA.for_all(varA, varB);
-        System.out.println("Result 8: " + exp8.verify() + "\n");
+        Express exp_8 = ax_a.for_all(ax_a, ax_b);
+        System.out.println("Result 8: " + exp_8.verify() + "\n");
 
         // Complex Expressions
-        Express exp9 = varA.and(varB).or(varA.not(varA));
-        System.out.println("Result 9: " + exp9.verify() + "\n");
+        Express exp_9 = ax_a.and(ax_b).or(ax_a.not(ax_a));
+        System.out.println("Result 9: " + exp_9.verify() + "\n");
 
-        Express exp10 = varA.or(varB).and(varA.imply(varB));
-        System.out.println("Result 10: " + exp10.verify() + "\n");
+        Express exp_10 = ax_a.or(ax_b).and(ax_a.imply(ax_b));
+        System.out.println("Result 10: " + exp_10.verify() + "\n");
 
-        Express exp11 = varA.and(varB).there_exist(varA.or(varB));
-        System.out.println("Result 11: " + exp11.verify() + "\n");
+        Express exp_11 = ax_a.and(ax_b).there_exist(ax_a.or(ax_b));
+        System.out.println("Result 11: " + exp_11.verify() + "\n");
 
-        Express exp12 = varA.and(varB).for_all(varA.or(varB));
-        System.out.println("Result 12: " + exp12.verify() + "\n");
+        Express exp_12 = ax_a.and(ax_b).for_all(ax_a.or(ax_b));
+        System.out.println("Result 12: " + exp_12.verify() + "\n");
 
         // Nested Quantifiers
-        Express exp13 = varA.and(varB).for_all(varA).there_exist(varB);
-        System.out.println("Result 13: " + exp13.verify() + "\n");
+        Express exp_13 = ax_a.and(ax_b).for_all(ax_a).there_exist(ax_b);
+        System.out.println("Result 13: " + exp_13.verify() + "\n");
 
-        Express exp14 = varA.or(varB).there_exist(varA).for_all(varB);
-        System.out.println("Result 14: " + exp14.verify() + "\n");
+        Express exp_14 = ax_a.or(ax_b).there_exist(ax_a).for_all(ax_b);
+        System.out.println("Result 14: " + exp_14.verify() + "\n");
 
         // More Complex and Nested Expressions
-        Express exp15 = varA.or(varB).for_all(varA.or(varB)).there_exist(varC.and(varB));
-        System.out.println("Result 15: " + exp15.verify() + "\n");
+        Express exp_15 = ax_a.or(ax_b).for_all(ax_a.or(ax_b)).there_exist(ax_c.and(ax_b));
+        System.out.println("Result 15: " + exp_15.verify() + "\n");
 
-        Express exp16 = varA.and(varC).there_exist(varA.and(varC)).for_all(varB.or(varC));
-        System.out.println("Result 16: " + exp16.verify() + "\n");
+        Express exp_16 = ax_a.and(ax_c).there_exist(ax_a.and(ax_c)).for_all(ax_b.or(ax_c));
+        System.out.println("Result 16: " + exp_16.verify() + "\n");
 
-        Express exp17 = varA.and(varB).for_all(varA).there_exist(varB.or(varC)).and(varA.imply(varC));
-        System.out.println("Result 17: " + exp17.verify() + "\n");
+        Express exp_17 = ax_a.and(ax_b).for_all(ax_a).there_exist(ax_b.or(ax_c)).and(ax_a.imply(ax_c));
+        System.out.println("Result 17: " + exp_17.verify() + "\n");
 
-        Express exp18 = varA.or(varB).there_exist(varA.and(varB)).for_all(varC.not(varC)).or(varB);
-        System.out.println("Result 18: " + exp18.verify() + "\n");
+        Express exp_18 = ax_a.or(ax_b).there_exist(ax_a.and(ax_b)).for_all(ax_c.not(ax_c)).or(ax_b);
+        System.out.println("Result 18: " + exp_18.verify() + "\n");
 
-        Express exp19 = varA.not(varA).for_all(varA.not(varA)).there_exist(varB.and(varC)).imply(varA.or(varC));
-        System.out.println("Result 19: " + exp19.verify() + "\n");
+        Express exp_19 = ax_a.not(ax_a).for_all(ax_a.not(ax_a)).there_exist(ax_b.and(ax_c)).imply(ax_a.or(ax_c));
+        System.out.println("Result 19: " + exp_19.verify() + "\n");
 
-        Express exp20 = varA.and(varB).there_exist(varA).for_all(varB).and(varA.for_all(varC).there_exist(varA.not(varA)));
-        System.out.println("Result 20: " + exp20.verify() + "\n");
+        Express exp_20 = ax_a.and(ax_b).there_exist(ax_a).for_all(ax_b).and(ax_a.for_all(ax_c).there_exist(ax_a.not(ax_a)));
+        System.out.println("Result 20: " + exp_20.verify() + "\n");
     }
 }

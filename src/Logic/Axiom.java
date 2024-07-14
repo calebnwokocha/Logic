@@ -1,7 +1,7 @@
 package Logic;
 
-public class Variable extends Operate {
-    public Variable(boolean value) {super(value);}
+public class Axiom extends Operate {
+    public Axiom(boolean value) {super(value);}
 
     @Override
     public boolean verify() {
