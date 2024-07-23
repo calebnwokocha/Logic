@@ -1,10 +1,11 @@
 import java.io.*;
 import java.util.*;
+import java.util.function.Supplier;
 
 import Logic.*;
 
 public class Terminal {
-    private static final Map<String, Express> map = new HashMap<>();
+    private static final Map<String, Supplier<Express>> map = new HashMap<>();
     private static final List<String> commandHistory = new ArrayList<>();
     private static final String SAVE_FILE = "commands.txt";
     private static final Random random = new Random();
@@ -64,7 +65,7 @@ public class Terminal {
         String name = parts[0].trim().split(" ")[1];
         String valueString = parts[1].trim().replace("new Axiom(", "").replace(")", "");
         boolean value = Boolean.parseBoolean(valueString);
-        map.put(name, new Axiom(value));
+        map.put(name, () -> new Axiom(value));
         System.out.println("Defined axiom " + name + " with value " + value);
     }
 
@@ -78,8 +79,9 @@ public class Terminal {
         if (exprParts.length < 2) {
             throw new IllegalArgumentException("Invalid expression syntax.");
         }
-        Express result = map.get(exprParts[0].trim());
-        if (result == null) {
+
+        Supplier<Express> resultSupplier = map.get(exprParts[0].trim());
+        if (resultSupplier == null) {
             throw new IllegalArgumentException("Expression " + exprParts[0] + " not found.");
         }
 
@@ -88,49 +90,35 @@ public class Terminal {
             String operator = subParts[0].trim();
             String argumentPart = subParts[1].replace(")", "").trim();
 
-            if (operator.equals("there_exist") || operator.equals("for_all")) {
-                handleQuantifiedExpression(result, operator, argumentPart);
-            } else {
-                result = handleBinaryOrUnaryExpression(result, operator, argumentPart);
-            }
+            resultSupplier = getUpdatedSupplier(resultSupplier, operator, argumentPart);
         }
-        map.put(name, result);
+
+        map.put(name, resultSupplier);
         System.out.println("Defined expression " + name);
     }
 
-    private static void handleQuantifiedExpression(Express result, String operator, String argumentPart) {
-        String[] args = argumentPart.split(",");
-        Express[] expressionsArgs = new Express[args.length];
-        for (int j = 0; j < args.length; j++) {
-            expressionsArgs[j] = map.get(args[j].trim());
-            if (expressionsArgs[j] == null) {
-                throw new IllegalArgumentException("Expression " + args[j].trim() + " not found.");
+    private static Supplier<Express> getUpdatedSupplier(Supplier<Express> resultSupplier, String operator, String argumentPart) {
+        return () -> {
+            Express result = resultSupplier.get();
+            if (operator.equals("there_exist") || operator.equals("for_all")) {
+                String[] args = argumentPart.split(",");
+                Express[] expressionsArgs = new Express[args.length];
+                for (int j = 0; j < args.length; j++) {
+                    expressionsArgs[j] = map.get(args[j].trim()).get();
+                }
+                return operator.equals("there_exist") ? result.there_exist(expressionsArgs) : result.for_all(expressionsArgs);
+            } else {
+                Express rightExpression = argumentPart.isEmpty() ? null : map.get(argumentPart).get();
+                return switch (operator) {
+                    case "and" -> result.and(rightExpression);
+                    case "or" -> result.or(rightExpression);
+                    case "not" -> result.not(rightExpression);
+                    case "equate" -> result.equate(rightExpression);
+                    case "imply" -> result.imply(rightExpression);
+                    case "iff" -> result.iff(rightExpression);
+                    default -> throw new IllegalArgumentException("Unknown operator: " + operator + ".");
+                };
             }
-        }
-        if (operator.equals("there_exist")) {
-            result.there_exist(expressionsArgs);
-        } else {
-            result.for_all(expressionsArgs);
-        }
-    }
-
-    private static Express handleBinaryOrUnaryExpression(Express result, String operator, String argumentPart) {
-        Express rightExpression = null;
-        if (!argumentPart.isEmpty()) {
-            rightExpression = map.get(argumentPart);
-            if (rightExpression == null) {
-                throw new IllegalArgumentException("Expression " + argumentPart + " not found.");
-            }
-        }
-
-        return switch (operator) {
-            case "and" -> result.and(rightExpression);
-            case "or" -> result.or(rightExpression);
-            case "not" -> result.not(rightExpression);
-            case "equate" -> result.equate(rightExpression);
-            case "imply" -> result.imply(rightExpression);
-            case "iff" -> result.iff(rightExpression);
-            default -> throw new IllegalArgumentException("Unknown operator: " + operator + ".");
         };
     }
 
@@ -139,10 +127,11 @@ public class Terminal {
         if (parts.length != 2 || !parts[1].equals("verify()")) {
             throw new IllegalArgumentException("Invalid verification syntax.");
         }
-        Express result = map.get(parts[0]);
-        if (result == null) {
+        Supplier<Express> resultSupplier = map.get(parts[0]);
+        if (resultSupplier == null) {
             throw new IllegalArgumentException("Expression " + parts[0] + " not found.");
         }
+        Express result = resultSupplier.get();
         System.out.println("Result: " + result.verify());
     }
 
