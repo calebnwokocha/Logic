@@ -7,14 +7,15 @@ class The extends Operate {
 
     @Override
     public boolean verify() {
+        int matchCount = 0;
         for (Object property : left.getProperties()) {
             // if-then statement is an example of theorem
             if (property == right) {
-                return true;
+                matchCount++;
             }
         }
-
-        return false;
+        System.out.println(toString());
+        return matchCount == 1;
     }
 
     @Override

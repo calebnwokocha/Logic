@@ -15,13 +15,28 @@ abstract class Operate implements Express {
     public Operate(Express left, Express right) {
         this.left = left;
         this.right = right;
-        this.properties = left.getProperties();
+        this.properties = new Object[left.getProperties().length +
+                right.getProperties().length];
+        System.arraycopy(left.getProperties(), 0,
+                this.properties, 0, left.getProperties().length);
+        System.arraycopy(right.getProperties(), 0, this.properties,
+                left.getProperties().length, right.getProperties().length);
     }
 
     public Operate(Express left, Express... rights) {
         this.left = left;
         this.rights = rights;
-        this.properties = left.getProperties();
+        int rightPropertyLength = 0;
+        for (Express right : rights) { rightPropertyLength += right.getProperties().length;}
+        this.properties = new Object[left.getProperties().length + rightPropertyLength];
+        System.arraycopy(left.getProperties(), 0,
+                this.properties, 0, left.getProperties().length);
+        int leftPropertyLength = left.getProperties().length;
+        for (Express right : rights) {
+            System.arraycopy(right.getProperties(), 0, this.properties,
+                    leftPropertyLength, right.getProperties().length);
+            leftPropertyLength = right.getProperties().length;
+        }
     }
 
     @Override
