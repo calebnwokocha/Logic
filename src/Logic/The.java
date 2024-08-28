@@ -7,11 +7,6 @@ class The extends Operate {
 
     @Override
     public boolean verify() {
-        // Check if left and its properties are not null
-        if (left != null && left.getProperties() != null) {
-
-        }
-
         for (Object property : left.getProperties()) {
             if (property == right) {
                 return true;
