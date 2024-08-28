@@ -7,7 +7,7 @@ class Not extends Operate {
 
     @Override
     public boolean verify() {
-        boolean result = !right.verify();
+        boolean result = left.verify() && !right.verify();
         System.out.println(toString());
         return result;
     }
