@@ -8,6 +8,7 @@ class The extends Operate {
     @Override
     public boolean verify() {
         for (Object property : left.getProperties()) {
+            // if-then statement is an example of theorem
             if (property == right) {
                 return true;
             }
