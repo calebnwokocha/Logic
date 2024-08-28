@@ -29,4 +29,9 @@ class ThereExist extends Operate {
         sb.append("_");
         return sb.toString();
     }
+
+    @Override
+    public Object[] getProperties() {
+        return properties;
+    }
 }

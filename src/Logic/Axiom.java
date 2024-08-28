@@ -1,7 +1,7 @@
 package Logic;
 
 public class Axiom extends Operate {
-    public Axiom(boolean value) {super(value);}
+    public Axiom(boolean value, Object... properties) {super(value, properties);}
 
     @Override
     public boolean verify() {
@@ -13,4 +13,6 @@ public class Axiom extends Operate {
     public String toString() {
         return "_" + value + "_";
     }
+
+    public Object[] getProperties() {return properties;};
 }

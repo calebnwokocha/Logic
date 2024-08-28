@@ -7,7 +7,7 @@ class Imply extends Operate {
 
     @Override
     public boolean verify() {
-        boolean result = !left.verify() || right.verify();
+        boolean result = new Or(new Not(left, left), right).verify();
         System.out.println(toString());
         return result;
     }
@@ -15,5 +15,10 @@ class Imply extends Operate {
     @Override
     public String toString() {
         return "_" + left + "_imply_" + right + "_";
+    }
+
+    @Override
+    public Object[] getProperties() {
+        return properties;
     }
 }

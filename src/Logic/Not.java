@@ -7,7 +7,7 @@ class Not extends Operate {
 
     @Override
     public boolean verify() {
-        boolean result = left.verify() && !right.verify();
+        boolean result = !right.verify();
         System.out.println(toString());
         return result;
     }
@@ -15,5 +15,10 @@ class Not extends Operate {
     @Override
     public String toString() {
         return "_" + left + "_not_" + right + "_";
+    }
+
+    @Override
+    public Object[] getProperties() {
+        return properties;
     }
 }

@@ -2,25 +2,26 @@ package Logic;
 
 abstract class Operate implements Express {
     protected boolean value;
+    protected Object[] properties;
     protected Express left;
     protected Express right;
     protected Express[] rights;
 
-    public Operate(boolean value) {
+    public Operate(boolean value, Object[] properties) {
         this.value = value;
+        this.properties = properties;
     }
 
-    public Operate(Express right) {
-        this.right = right;
-    }
     public Operate(Express left, Express right) {
         this.left = left;
         this.right = right;
+        this.properties = left.getProperties();
     }
 
     public Operate(Express left, Express... rights) {
         this.left = left;
         this.rights = rights;
+        this.properties = left.getProperties();
     }
 
     @Override
@@ -28,6 +29,9 @@ abstract class Operate implements Express {
 
     @Override
     public abstract String toString();
+
+    @Override
+    public abstract Object[] getProperties();
 
     @Override
     public Express and(Express expression) {
@@ -67,5 +71,10 @@ abstract class Operate implements Express {
     @Override
     public Express for_all(Express... expressions) {
         return new ForAll(this, expressions);
+    }
+
+    @Override
+    public Express the(Express expression) {
+        return new The(this, expression);
     }
 }

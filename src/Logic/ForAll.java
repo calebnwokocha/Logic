@@ -8,8 +8,8 @@ class ForAll extends Operate {
 
     @Override
     public boolean verify() {
-        for (Express expression : rights) {
-            if (!expression.verify()) {
+        for (Express express : rights) {
+            if (new Not(express, express).verify()) {
                 return false;
             }
         }
@@ -31,4 +31,10 @@ class ForAll extends Operate {
         sb.append("_");
         return sb.toString();
     }
+
+    @Override
+    public Object[] getProperties() {
+        return properties;
+    }
+
 }

@@ -16,4 +16,9 @@ class And extends Operate {
     public String toString() {
         return "_" + left + "_and_" + right + "_";
     }
+
+    @Override
+    public Object[] getProperties() {
+        return properties;
+    }
 }
