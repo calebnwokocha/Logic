@@ -7,7 +7,7 @@ public class Terminal {
         Model model = new Model();
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.print("Prompt: ");
+            System.out.print("You: ");
             String text = scanner.nextLine();
             model.generate(text);
         }
