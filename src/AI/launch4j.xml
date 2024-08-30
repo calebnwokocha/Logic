@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>console</headerType>
+  <jar>C:\Users\Admin\IdeaProjects\AI\AI.jar</jar>
+  <outfile>C:\Users\Admin\IdeaProjects\AI\AI.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon></icon>
+  <singleInstance>
+    <mutexName>AI</mutexName>
+    <windowTitle>AI</windowTitle>
+  </singleInstance>
+  <classPath>
+    <mainClass>Terminal</mainClass>
+  </classPath>
+  <jre>
+    <path>JRE</path>
+    <requiresJdk>false</requiresJdk>
+    <requires64Bit>true</requires64Bit>
+    <minVersion>22.0.0</minVersion>
+    <maxVersion></maxVersion>
+    <opt>--enable-preview</opt>
+  </jre>
+  <versionInfo>
+    <fileVersion>1.0.0.0</fileVersion>
+    <txtFileVersion>1</txtFileVersion>
+    <fileDescription>AI</fileDescription>
+    <copyright>Caleb Princewill Nwokocha</copyright>
+    <productVersion>1.0.0.0</productVersion>
+    <txtProductVersion>1</txtProductVersion>
+    <productName>AI</productName>
+    <companyName></companyName>
+    <internalName>AI</internalName>
+    <originalFilename>AI.exe</originalFilename>
+    <trademarks></trademarks>
+    <language>ENGLISH_US</language>
+  </versionInfo>
+</launch4jConfig>
