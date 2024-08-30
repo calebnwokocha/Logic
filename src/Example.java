@@ -3,7 +3,7 @@ import Logic.*;
 public class Example {
     public static void main(String[] args) {
         Axiom ax_b = new Axiom(true, "a");
-        Axiom ax_a = new Axiom(false, ax_b, 6);
+        Axiom ax_a = new Axiom(false, 9, 6);
         Axiom ax_c = new Axiom(true, ax_b, 8);
 
         // Basic Operations
