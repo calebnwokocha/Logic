@@ -16,14 +16,13 @@ class Model {
 
     latinSquare() {
         const words = this.memory.trim().split(/\s+/);
-        const uniqueWords = Array.from(new Set(words));
-        const n = uniqueWords.length;
+        const n = words.length;
         const latinSquare = Array.from({ length: n }, () => Array(n).fill(""));
 
         for (let i = 0; i < n; i++) {
-            for (let j = 0; j < n; j++) {
-                latinSquare[i][j] = uniqueWords[(i + j) % n];
-            }
+                for (let j = 0; j < n; j++) {
+                    latinSquare[i][j] = words[(i + j) % n];
+                }
         }
         return latinSquare;
     }

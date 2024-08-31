@@ -18,13 +18,12 @@ public class Model {
 
     private String[][] latinSquare() {
         String[] words = memory.trim().split("\\s+");
-        List<String> uniqueWords = new ArrayList<>(new LinkedHashSet<>(Arrays.asList(words)));
-        int n = uniqueWords.size();
+        int n = words.length;
         String[][] latinSquare = new String[n][n];
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                latinSquare[i][j] = uniqueWords.get((i + j) % n);
+                latinSquare[i][j] = words[(i + j) % n];
             }
         }
         return latinSquare;
