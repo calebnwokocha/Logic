@@ -6,29 +6,27 @@ public class Model {
     private String memory = "";
 
     public void generate(String input) {
-        this.memory = memory + " " + input;
+        memory += " " + input;
         String[][] latinSquare = latinSquare();
-        int min = 0; int max = latinSquare.length - 1;
-        int randomNum = new Random().nextInt((max - min) + 1) + min;
-        String[] output = new String[latinSquare().length];
-        for (int i = 0; i < latinSquare.length; i++) {output[i] = latinSquare[i][i];}
+        int randomNum = new Random().nextInt(latinSquare.length);
         System.out.print("AI: ");
-        for (int i = 0; i < randomNum; i++) {System.out.print(output[i] + " ");}
+        for (int i = 0; i < randomNum; i++) {
+            System.out.print(latinSquare[i][i] + " ");
+        }
         System.out.println();
     }
 
     private String[][] latinSquare() {
-        String[] words = this.memory.split(" ");
-        Set<String> uniqueWordsSet = new LinkedHashSet<>(Arrays.asList(words));
-        List<String> uniqueWordsList = new ArrayList<>(uniqueWordsSet);
-        int n = uniqueWordsList.size();
+        String[] words = memory.trim().split("\\s+");
+        List<String> uniqueWords = new ArrayList<>(new LinkedHashSet<>(Arrays.asList(words)));
+        int n = uniqueWords.size();
         String[][] latinSquare = new String[n][n];
+
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                latinSquare[i][j] = uniqueWordsList.get((i + j) % n);
+                latinSquare[i][j] = uniqueWords.get((i + j) % n);
             }
         }
         return latinSquare;
     }
 }
-
