@@ -10,11 +10,10 @@ public class Model {
         String[][] latinSquare = latinSquare();
         int min = 0; int max = latinSquare.length - 1;
         int randomNum = new Random().nextInt((max - min) + 1) + min;
-        String[] output = latinSquare[randomNum];
+        String[] output = new String[latinSquare().length];
+        for (int i = 0; i < latinSquare.length; i++) {output[i] = latinSquare[i][i];}
         System.out.print("AI: ");
-        for (int i = 0; i < randomNum; i++) {
-            System.out.print(output[i] + " ");
-        }
+        for (int i = 0; i < randomNum; i++) {System.out.print(output[i] + " ");}
         System.out.println();
     }
 
