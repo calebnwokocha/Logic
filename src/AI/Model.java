@@ -11,9 +11,7 @@ public class Model {
         int stochasticNum = new Random().nextInt(latinSquare.length);
         System.out.print("AI: ");
         for (int i = 0; i < stochasticNum; i++) {
-            for (int j = 0; j < i; j++) {
-                System.out.print(latinSquare[i][j] + " ");
-            }
+            System.out.print(latinSquare[stochasticNum][i] + " ");
         }
         System.out.println();
     }
