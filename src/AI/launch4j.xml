@@ -2,8 +2,8 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>console</headerType>
-  <jar>C:\Users\Admin\IdeaProjects\AI\AI.jar</jar>
-  <outfile>C:\Users\Admin\IdeaProjects\AI\AI.exe</outfile>
+  <jar>C:\Users\Caleb P. Nwokocha\IdeaProjects\Logic\src\AI\AI.jar</jar>
+  <outfile>C:\Users\Caleb P. Nwokocha\IdeaProjects\Logic\src\AI\AI.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
@@ -11,7 +11,7 @@
   <downloadUrl></downloadUrl>
   <supportUrl></supportUrl>
   <stayAlive>false</stayAlive>
-  <restartOnCrash>false</restartOnCrash>
+  <restartOnCrash>true</restartOnCrash>
   <manifest></manifest>
   <icon></icon>
   <singleInstance>
