@@ -27,10 +27,14 @@ body {
 
 #inputText {
     width: calc(100% - 90px);
+    height: 50px;
     padding: 10px;
     margin-right: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    resize: vertical; /* Allows vertical resizing */
+    overflow-y: auto; /* Adds vertical scrollbar if needed */
+    box-sizing: border-box; /* Ensures padding and border are included in the width and height */
 }
 
 #submitButton {
