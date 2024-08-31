@@ -8,10 +8,12 @@ public class Model {
     public void generate(String input) {
         memory += " " + input;
         String[][] latinSquare = latinSquare();
-        int randomNum = new Random().nextInt(latinSquare.length);
+        int stochasticNum = new Random().nextInt(latinSquare.length);
         System.out.print("AI: ");
-        for (int i = 0; i < randomNum; i++) {
-            System.out.print(latinSquare[i][i] + " ");
+        for (int i = 0; i < stochasticNum; i++) {
+            for (int j = 0; j < i; j++) {
+                System.out.print(latinSquare[i][j] + " ");
+            }
         }
         System.out.println();
     }
