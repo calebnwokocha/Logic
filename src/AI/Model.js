@@ -6,10 +6,10 @@ class Model {
     generate(input) {
         this.memory += " " + input;
         const latinSquare = this.latinSquare();
-        const stochasticNum = Math.floor(Math.random() * latinSquare.length);
+        const stochasticValue = Math.floor(Math.random() * latinSquare.length);
         let output = "AI: ";
-        for (let i = 0; i < stochasticNum; i++) {
-            output += latinSquare[stochasticNum][i] + " ";
+        for (let value = stochasticValue; value < latinSquare.length; value++) {
+            output += latinSquare[value][value] + " ";
         }
         return output.trim();
     }
