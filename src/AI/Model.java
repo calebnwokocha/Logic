@@ -10,8 +10,8 @@ public class Model {
         String[][] latinSquare = latinSquare();
         int stochasticValue = new Random().nextInt(latinSquare.length);
         System.out.print("AI: ");
-        for (int value = stochasticValue; value < latinSquare.length; value++) {
-            System.out.print(latinSquare[value][value] + " ");
+        for (int value = 0; value < stochasticValue; value++) {
+            System.out.print(latinSquare[stochasticValue][value] + " ");
         }
         System.out.println();
     }
