@@ -21,9 +21,9 @@ public class Model {
         int n = words.length;
         String[][] latinSquare = new String[n][n];
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                latinSquare[i][j] = words[(i + j) % n];
+        for (int row = 0; row < n; row++) {
+            for (int col = 0; col < n; col++) {
+                latinSquare[row][col] = words[(row + col) % n];
             }
         }
         return latinSquare;

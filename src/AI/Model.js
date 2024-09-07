@@ -19,9 +19,9 @@ class Model {
         const n = words.length;
         const latinSquare = Array.from({ length: n }, () => Array(n).fill(""));
 
-        for (let i = 0; i < n; i++) {
-                for (let j = 0; j < n; j++) {
-                    latinSquare[i][j] = words[(i + j) % n];
+        for (let row = 0; row < n; row++) {
+                for (let col = 0; col < n; col++) {
+                    latinSquare[row][col] = words[(row + col) % n];
                 }
         }
         return latinSquare;
