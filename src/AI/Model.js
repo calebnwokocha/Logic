@@ -8,8 +8,8 @@ class Model {
         const latinSquare = this.latinSquare();
         const stochasticValue = Math.floor(Math.random() * latinSquare.length);
         let output = "AI: ";
-        for (let value = stochasticValue; value < latinSquare.length; value++) {
-            output += latinSquare[value][value] + " ";
+        for (let value = 0; value < stochasticValue; value++) {
+            output += latinSquare[stochasticValue][value] + " ";
         }
         return output.trim();
     }
