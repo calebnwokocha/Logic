@@ -2,8 +2,8 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>console</headerType>
-  <jar>C:\Users\Caleb P. Nwokocha\IdeaProjects\Logic\src\AI\AI.jar</jar>
-  <outfile>C:\Users\Caleb P. Nwokocha\IdeaProjects\Logic\src\AI\AI.exe</outfile>
+  <jar>C:\Users\Caleb P. Nwokocha\IdeaProjects\Logic\src\JATP.jar</jar>
+  <outfile>C:\Users\Caleb P. Nwokocha\IdeaProjects\Logic\src\JATP.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
@@ -11,18 +11,18 @@
   <downloadUrl></downloadUrl>
   <supportUrl></supportUrl>
   <stayAlive>false</stayAlive>
-  <restartOnCrash>true</restartOnCrash>
-  <manifest></manifest>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest>C:\Users\Caleb P. Nwokocha\IdeaProjects\Logic\src\META-INF\MANIFEST.MF</manifest>
   <icon></icon>
   <singleInstance>
-    <mutexName>AI</mutexName>
-    <windowTitle>AI</windowTitle>
+    <mutexName>JATP</mutexName>
+    <windowTitle>JATP</windowTitle>
   </singleInstance>
   <classPath>
-    <mainClass>Terminal</mainClass>
+    <mainClass>JATP</mainClass>
   </classPath>
   <jre>
-    <path>JRE</path>
+    <path>C:\Users\Caleb P. Nwokocha\IdeaProjects\Logic\src\JRE</path>
     <requiresJdk>false</requiresJdk>
     <requires64Bit>true</requires64Bit>
     <minVersion>22.0.0</minVersion>
@@ -32,14 +32,14 @@
   <versionInfo>
     <fileVersion>1.0.0.0</fileVersion>
     <txtFileVersion>1</txtFileVersion>
-    <fileDescription>AI</fileDescription>
+    <fileDescription>Java Automated Theorem Prover</fileDescription>
     <copyright>Caleb Princewill Nwokocha</copyright>
     <productVersion>1.0.0.0</productVersion>
     <txtProductVersion>1</txtProductVersion>
-    <productName>AI</productName>
+    <productName>Java Automated Theorem Prover</productName>
     <companyName></companyName>
-    <internalName>AI</internalName>
-    <originalFilename>AI.exe</originalFilename>
+    <internalName>Java Automated Theorem Prover</internalName>
+    <originalFilename>JATP.exe</originalFilename>
     <trademarks></trademarks>
     <language>ENGLISH_US</language>
   </versionInfo>
