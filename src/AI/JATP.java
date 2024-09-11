@@ -7,26 +7,27 @@ import java.util.Scanner;
 public class JATP {
     private final HashMap<Object, Object> memory = new HashMap<>();
 
-    public void input(Object x, Object y) {
-        if (memory.containsKey(x)) {
-            output(x);
+    public void input(Object leftObject, Object rightObject) {
+        if (memory.containsKey(leftObject)) {
+            output(leftObject);
         } else {
-            memory.put(x, y);
-            analyse(x);
+            memory.put(leftObject, rightObject);
+            prove(leftObject);
         }
     }
 
-    private void output(Object object) {
-        System.out.println("Generated Equation: " + object + " = " + memory.get(object) + " = " + memory.get(memory.get(object)));
+    private void output(Object leftObject) {
+        System.out.println("Generated Equation: " + leftObject + " = " + memory.get(leftObject) 
+                + " = " + memory.get(memory.get(leftObject)));
         System.out.println("HashMap Memory: " + memory);
     }
 
-    private void analyse(Object object) {
-        ArrayList<Object> keys = new ArrayList<>(memory.keySet());
-        for (Object key : keys) {
-            Object value = memory.get(key);
-            if (!key.equals(object) && value.equals(memory.get(object))) {
-                memory.replace(object, key);
+    private void prove(Object leftObject) {
+        ArrayList<Object> leftObjects = new ArrayList<>(memory.keySet());
+        for (Object object : leftObjects) {
+            Object rightObject = memory.get(object);
+            if (!object.equals(leftObject) && rightObject.equals(memory.get(leftObject))) {
+                memory.replace(leftObject, object);
             }
         }
     }
@@ -47,15 +48,15 @@ public class JATP {
 
         while (true) {
             System.out.print("left object: ");
-            String inputX = scanner.nextLine();
-            if (inputX.equalsIgnoreCase("exit")) {
+            String leftObject = scanner.nextLine();
+            if (leftObject.equalsIgnoreCase("exit")) {
                 break;
             }
 
             System.out.print("right object: ");
-            String inputY = scanner.nextLine();
+            String rightObject = scanner.nextLine();
 
-            JATP.input(inputX, inputY);
+            JATP.input(leftObject, rightObject);
         }
 
         scanner.close();
