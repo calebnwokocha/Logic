@@ -10,7 +10,6 @@ public class JATP {
 
     public JATP() {
         System.out.println("JAVA AUTOMATED THEOREM PROVER (JATP)");
-        System.out.println();
         System.out.println("Creator: Caleb Princewill Nwokocha");
         System.out.println();
         System.out.println("Theorem: Every equation has a left object and a right object.");
