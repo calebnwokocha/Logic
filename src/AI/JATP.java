@@ -49,7 +49,7 @@ public class JATP {
 
     private void save() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("memory.jatp"))) {
-            oos.writeObject(memory);
+            oos.writeObject(this.memory);
             System.out.println("memory map saved");
         } catch (IOException e) {
             System.out.println("error saving memory map: " + e.getMessage());
@@ -60,8 +60,8 @@ public class JATP {
     private void load() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("memory.jatp"))) {
             HashMap<Object, Object> loadedMemory = (HashMap<Object, Object>) ois.readObject();
-            memory.clear();
-            memory.putAll(loadedMemory);
+            this.memory.clear();
+            this.memory.putAll(loadedMemory);
             System.out.println("memory map loaded");
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("error loading memory map: " + e.getMessage());
