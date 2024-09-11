@@ -17,9 +17,9 @@ public class JATP {
     }
 
     private void output(Object leftObject) {
-        System.out.println("Generated Equation: " + leftObject + "=" + memory.get(leftObject)
+        System.out.println("generated equation: " + leftObject + "=" + memory.get(leftObject)
                 + "=" + memory.get(memory.get(leftObject)));
-        System.out.println("HashMap Memory: " + memory);
+        System.out.println("memory map: " + memory);
     }
 
     private void prove(Object leftObject) {
