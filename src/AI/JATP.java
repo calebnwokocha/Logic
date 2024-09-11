@@ -34,6 +34,7 @@ public class JATP {
         System.out.println("equation found: " + leftObject + "=" + this.memory.get(leftObject)
                 + "=" + this.memory.get(this.memory.get(leftObject)));
         System.out.println("memory map: " + this.memory);
+        this.save();
     }
 
     private void prove(Object leftObject) {
@@ -76,18 +77,7 @@ public class JATP {
             String leftObject = scanner.nextLine();
             System.out.print("right object: ");
             String rightObject = scanner.nextLine();
-
-            if (leftObject.equalsIgnoreCase("exit") ||
-                    rightObject.equalsIgnoreCase("exit") ) {
-                break;
-            } else if (leftObject.equalsIgnoreCase("save") ||
-                    rightObject.equalsIgnoreCase("save") ) {
-                JATP.save();
-            } else {
-                JATP.input(leftObject, rightObject);
-            }
+            JATP.input(leftObject, rightObject);
         }
-
-        scanner.close();
     }
 }
