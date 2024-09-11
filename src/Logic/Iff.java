@@ -14,11 +14,6 @@ class Iff extends Operate {
 
     @Override
     public String toString() {
-        return "_" + left + "_iff_" + right + "_";
-    }
-
-    @Override
-    public Object[] getProperties() {
-        return properties;
+        return " (" + left + " ⇔ " + right + ") ";
     }
 }

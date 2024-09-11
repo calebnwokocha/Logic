@@ -2,9 +2,12 @@ import Logic.*;
 
 public class Example {
     public static void main(String[] args) {
-        Axiom ax_b = new Axiom(true, "a");
-        Axiom ax_a = new Axiom(false, 9, 6);
-        Axiom ax_c = new Axiom(true, ax_b, 8);
+        Axiom ax_b = new Axiom(true);
+        Axiom ax_a = new Axiom(false);
+        Axiom ax_c = new Axiom(true);
+
+        Express exp_21 = ax_a.or(ax_a).and(ax_c).the(ax_b);
+        System.out.println("Result 21: " + exp_21.verify() + "\n");
 
         // Basic Operations
         Express exp_1 = ax_a.and(ax_b);
@@ -71,7 +74,5 @@ public class Example {
         Express exp_20 = ax_a.and(ax_b).there_exist(ax_a).for_all(ax_b).and(ax_a.for_all(ax_c).there_exist(ax_a.not(ax_a)));
         System.out.println("Result 20: " + exp_20.verify() + "\n");
 
-        Express exp_21 = ax_a.or(ax_a).and(ax_c).the(ax_b);
-        System.out.println("Result 21: " + exp_21.verify() + "\n");
     }
 }

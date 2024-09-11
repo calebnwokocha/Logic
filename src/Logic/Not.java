@@ -14,11 +14,6 @@ class Not extends Operate {
 
     @Override
     public String toString() {
-        return "_" + left + "_not_" + right + "_";
-    }
-
-    @Override
-    public Object[] getProperties() {
-        return properties;
+        return " (" + left + " ¬ " + right + ") ";
     }
 }

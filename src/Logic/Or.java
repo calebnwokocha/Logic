@@ -14,11 +14,7 @@ class Or extends Operate {
 
     @Override
     public String toString() {
-        return "_" + left + "_or_" + right + "_";
+        return " (" + left + " ∨ " + right + ") ";
     }
 
-    @Override
-    public Object[] getProperties() {
-        return properties;
-    }
 }

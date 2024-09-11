@@ -14,11 +14,6 @@ class Equate extends Operate {
 
     @Override
     public String toString() {
-        return "_" + left + "_equate_" + right + "_";
-    }
-
-    @Override
-    public Object[] getProperties() {
-        return properties;
+        return " (" + left + " = " + right + ") ";
     }
 }

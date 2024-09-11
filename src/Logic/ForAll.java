@@ -21,20 +21,14 @@ class ForAll extends Operate {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("_").append(left).append("_for_all_");
+        sb.append(" [").append(left).append(" ∀ ");
         for (int i = 0; i < rights.length; i++) {
             sb.append(rights[i]);
             if (i < rights.length - 1) {
                 sb.append(", ");
             }
         }
-        sb.append("_");
+        sb.append("] ");
         return sb.toString();
     }
-
-    @Override
-    public Object[] getProperties() {
-        return properties;
-    }
-
 }
