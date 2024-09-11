@@ -48,7 +48,7 @@ public class JATP {
     }
 
     private void save() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("memory"))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("memory.jatp"))) {
             oos.writeObject(memory);
             System.out.println("memory map saved");
         } catch (IOException e) {
@@ -58,7 +58,7 @@ public class JATP {
 
     @SuppressWarnings("unchecked")
     private void load() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("memory"))) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("memory.jatp"))) {
             HashMap<Object, Object> loadedMemory = (HashMap<Object, Object>) ois.readObject();
             memory.clear();
             memory.putAll(loadedMemory);
