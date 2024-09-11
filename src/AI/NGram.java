@@ -1,68 +1,55 @@
-package AI;
+/*
+import java.lang.reflect.Array;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+public class HigherDimensionalTensor {
 
-public class NGram {
-    private Map<Long, String[]> map = new HashMap<>();
-
-
-    public boolean model(String input, int gram) {
-        makeGram(input, gram);
-        return false;
-    }
-
-    // Tokenization method to convert a word to a unique long value
-    public long tokenize(String word) {
-        long number = 0;
-        int position = 1;  // Start with position 1 for each character
-        for (char ch : word.toCharArray()) {
-            int value = ch - 'a' + 1;  // Convert 'a' = 1, ..., 'z' = 26
-            number += (long) (value * Math.pow(100, word.length() - position));  // Multiply by a power of 100
-            position++;
+    // Method to create a tensor with d dimensions, each of size n
+    public static Object createTensor(int n, int dimensions) {
+        if (dimensions < 1) {
+            throw new IllegalArgumentException("Number of dimensions must be at least 1.");
         }
-        return number;
+        return createTensorRecursive(n, dimensions);
     }
 
-    public void makeGram(String input, int gram) {
-        String[] words = input.trim().split("\\s+");
-        long[] keys = new long[words.length];
+    // Recursive method to create a tensor of given dimensions
+    private static Object createTensorRecursive(int n, int dimensions) {
+        if (dimensions == 1) {
+            return new int[n];
+        }
+        Object array = Array.newInstance(int.class, n);
+        for (int i = 0; i < n; i++) {
+            Array.set(array, i, createTensorRecursive(n, dimensions - 1));
+        }
+        return array;
+    }
 
-        for (int i = 0; i < keys.length; i++) {
-            keys[i] = tokenize(words[i]);
-
-            // Initialize the array to hold the n-gram including the next word
-            String[] grams = new String[gram + 1];  // Increase size to hold next word
-
-            // Create the n-gram by looking at the current word, previous words, and the next word
-            for (int j = 0; j < gram; j++) {
-                int index = i - gram + j + 1;  // Calculate the correct index for the n-gram
-                if (index >= 0 && index < words.length) {
-                    grams[j] = words[index];  // Fill in previous and current words
+    // Utility method to print the tensor
+    private static void printTensor(Object tensor, int dimensions, int depth) {
+        if (dimensions == 1) {
+            int[] array = (int[]) tensor;
+            for (int value : array) {
+                System.out.print(value + " ");
+            }
+        } else {
+            int length = Array.getLength(tensor);
+            for (int i = 0; i < length; i++) {
+                if (depth > 0) {
+                    printTensor(Array.get(tensor, i), dimensions - 1, depth - 1);
                 } else {
-                    grams[j] = null;  // Handle cases where the n-gram goes out of bounds
+                    System.out.println();
                 }
             }
-
-            // Include the next word in the last position of the array (if available)
-            if (i + 1 < words.length) {
-                grams[gram] = words[i + 1];  // Include the next word
-            } else {
-                grams[gram] = null;  // If there's no next word, fill with null
-            }
-
-            // Print the generated n-gram for debugging
-            System.out.println("N-gram for word '" + words[i] + "': " + Arrays.toString(grams));
-
-            // Put the tokenized word and its n-gram in the map
-            map.put(keys[i], grams);
-
         }
     }
 
     public static void main(String[] args) {
-        // Example usage of the NGram class
-        System.out.print(new NGram().model("Hello world today is awesome. Hello my friend today", 4));
+        int n = 2; // Size of each dimension
+        int dimensions = 4; // Number of dimensions
+
+        // Create and print a higher-dimensional tensor
+        Object tensor = createTensor(n, dimensions);
+        System.out.println("Tensor:");
+        printTensor(tensor, dimensions, dimensions);
     }
 }
+*/
